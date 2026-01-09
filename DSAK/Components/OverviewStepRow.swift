@@ -8,11 +8,51 @@
 import SwiftUI
 
 struct OverviewStepRow: View {
+    let number: String
+    let title: String
+    let desc: String
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack(alignment: .top, spacing: 16) {
+            ZStack {
+                Circle()
+                    .fill(Color(uiColor: .systemGray6))
+                    .frame(width: 32, height: 32)
+                
+                Text(number)
+                    .fontWeight(.bold)
+                    .foregroundStyle(.blue)
+            }
+            
+            VStack(alignment: .leading, spacing: 4) {
+                Text(title)
+                    .font(.headline)
+                    .foregroundStyle(.white)
+                
+                Text(desc)
+                    .font(.subheadline)
+                    .foregroundStyle(.gray)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            
+            Spacer()
+            
+            Image(systemName: "chevron.right")
+                .foregroundStyle(.gray)
+        }
+        .padding()
+        .background(Color(uiColor: .systemGray6).opacity(0.1))
+        .cornerRadius(16)
     }
 }
 
 #Preview {
-    OverviewStepRow()
+    OverviewStepRow(
+        number: "1",
+        title: "Create Account",
+        desc: "Sign up using your email address to get started."
+    )
+    .padding()
+    .background(Color.black)
 }
+
